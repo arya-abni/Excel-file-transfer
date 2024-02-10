@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E2M</title>
+    <style>
+        body{
+            margin: 0%;
+            padding: 0%;
+        }
+        .grid-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 5px;
+            text-align: center;
+        }
+        .modal-footer{
+            grid-column: span 2;
+            
+        }
+        .dropdown{
+            height: 30%;
+            width: 150px;
+        }
+      
+        .container{
+            height:100vh;
+            background-color: ;
+    
+        }
+        .modal-header h2{
+            margin-left: 120px;
+            font-weight:bold;
+        }
+        select{
+            background-color: whitesmoke;
+        }
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   
+</head>
+
+    <body>
+
+        <div class="container modal modal-sheet position-static d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header border-bottom-0">
+                        <h2 class="modal-title fs-5" >Excel to MsSql Sender</h2>
+                    </div>
+
+                    <div class="modal-body py-0">
+                        <p style="color:red; text-align:center;">Please enter excel sheet with <span style="font-weight: bold;">.xlsx</span> or <span style="font-weight: bold;">.xls</span> format only.</p>
+                    </div>
+
+                    <div class="form">
+                        <form class="grid-container"  method="POST" action="/upload" enctype="multipart/form-data">
+                            <p>Select a table: </p>
+                            <select name="selected_table" class="dropdown">
+                                {% for option in options %}
+                                        <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <p>Upload Excel File:</p>
+                            <input type="file" name="file" accept=".xlsx, .xls">
+                            <div class="modal-footer flex-column  w-100 gap-2 pb-3 border-top-0">
+                                <button type="submit" class="btn btn-lg btn-primary">Upload data</button>
+                            </div>   
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>  
+            
+            <footer class="py-3 my-4">
+                <p class="text-center text-body-secondary">© All rights are reserved to Mr. Arya</p>
+            </footer>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    </body>
+</html>
