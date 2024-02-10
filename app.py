@@ -6,15 +6,6 @@ import pandas as pd
 
 app = Flask(__name__)
 
-SERVER_NAME = '172.20.20.251'
-USERNAME = 'sa'  
-PASSWORD = 'Ccrd$1234' 
-# SERVER_NAME=r'ABNISH\SQLEXPRESS'
-
-# USERNAME='radhe'
-# PASSWORD='abnish@arya8955'
-
-
 connection_string = f"""
     DRIVER={{SQL Server}};
     SERVER={SERVER_NAME};
@@ -22,7 +13,6 @@ connection_string = f"""
     PWD={PASSWORD};
    
 """
-
 conn = pypyodbc.connect(connection_string)
 cursor = conn.cursor()
 databases_query = "SELECT name FROM master.sys.databases WHERE database_id > 4"
